@@ -83,7 +83,7 @@ var AppComponent = /** @class */ (function () {
         var exitCircuit = this.exitImg.nativeElement;
         exitCircuit.style.left = te.touches[te.touches.length - 1].clientX - exitCircuit.offsetWidth / 2 + "px";
         exitCircuit.style.top = te.touches[te.touches.length - 1].clientY - exitCircuit.offsetHeight / 2 + "px";
-        window.alert("touch move");
+        //window.alert("touch move");
     };
     AppComponent.prototype.dropHandler = function (ev) {
         ev.preventDefault();
