@@ -3,14 +3,14 @@
 
  .main{
     
-     width: 98.4%;
-     height: 95%;
-     min-width: 98.4%;
-     min-height: 95%;
+     width: 99%;
+     height: 85%;
+     min-width: 99%;
+     min-height: 85%;
      background-color:whitesmoke;
      
-     background-position: 100%;
-     top:11.8%;
+     
+     top:12%;
     position: absolute;
  }
  

@@ -3,19 +3,21 @@
     
     padding-left: 45%;
    background-color: whitesmoke;
-    
+   width: 100%;
+   min-width: 50%;
+   
     }
 
 .actiondiv{
    
    background-image: url('/assets/images/Actionbar.png');
-   width: 30%;
-   padding-top: 1px;
+  
+   
 }  
 
 .actionitem{
    
-    width: 15%;
+    width: 12%;
     height: 1%;
     margin-left: 15%;
     cursor: pointer;
