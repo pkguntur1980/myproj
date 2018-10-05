@@ -13,6 +13,12 @@ import { LoginComponent } from './login/login.component';
 import {RouterModule,Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
+const appRoutes:Routes = [
+  {path:'login',component:LoginComponent},
+  {path:'home',component:HomeComponent},
+  {path:'main',component:MainComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +35,11 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
