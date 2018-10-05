@@ -16,7 +16,8 @@ import { HomeComponent } from './home/home.component';
 const appRoutes:Routes = [
   {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
-  {path:'main',component:MainComponent}
+  {path:'main',component:MainComponent},
+  {path:'',component:MainComponent}
 ]
 
 @NgModule({
