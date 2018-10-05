@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div >
+
+
+
+  <div class="buttonbardiv">
+    <mat-button-toggle-group #group="matButtonToggleGroup" (change)="shapeSelectClick($event.value)" class="buttonbar">
+      <mat-button-toggle value="arrow">
+        <mat-icon aria-label="Example icon-button with a heart icon">call_made</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="line">
+        <mat-icon aria-label="Example icon-button with a heart icon">maximize</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="triangle">
+        <mat-icon aria-label="Example icon-button with a heart icon">change_history</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="circle">
+        <mat-icon aria-label="Example icon-button with a heart icon">brightness_1</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="rectangle">
+        <mat-icon aria-label="Example icon-button with a heart icon">crop_3_2</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="container">
+
+  <div class="col1">
+    <mat-grid-list cols="1">
+      <mat-grid-tile class="c1">
+  
+      </mat-grid-tile>
+      <mat-grid-tile class="c2">
+        
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div class="col2">
+    <canvas (mouseup)="capturePoint($event)" #myCanvas></canvas>
+  </div>
+</div>

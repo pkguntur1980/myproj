@@ -1,0 +1,9 @@
+.header{
+    background-image: url('/assets/images/HeaderBG.png');
+    width: 100%;
+}
+
+.actionitem
+{
+    cursor: pointer;
+}

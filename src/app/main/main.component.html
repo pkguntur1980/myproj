@@ -1,0 +1,11 @@
+<div class="main">
+    <img #rectImg src="assets/images/Rectangle.png"  class="rectangle" (dragover)="allowDrop($event)" (drop)="dropHandler($event)"/>
+    <img #exitImg src="assets/images/Exit.png" class="exit" id="exitImg" (touchmove)="touchHandler($event)"  (dragstart)="dragHandler($event)" draggable="true" />
+    <img #gwcImg src="assets/images/GWC.png" (touchmove)="touchgwcHandler($event)" class="gwc" id="gwcImg" (dragstart)="dragHandler($event)" draggable="true"/>
+
+    <img #rwcImg src="assets/images/RWC.png" (touchmove)="touchrwcHandler($event)" id="rwcImg"  class="rwc" (dragstart)="dragHandler($event)" draggable="true"/>
+    <img src="assets/images/SRectangle.png" class="smallrectangleleft" />
+    <img src="assets/images/SRectangle.png" class="smallrectangleright" />
+    <img src="assets/images/Connector.png" class="connector" />
+
+  </div>

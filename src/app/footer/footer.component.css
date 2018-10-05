@@ -1,0 +1,11 @@
+.footer {
+    position: absolute;
+    top:95%;
+    background-image: url('/assets/images/HeaderBG.png');
+    width: 99%;
+    height: 3.5%;
+    font-size: 60%;
+    text-align: center;
+    color: antiquewhite;
+    padding-top: 5px;       
+}

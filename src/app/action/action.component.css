@@ -1,0 +1,23 @@
+.action
+{
+    
+    padding-left: 45%;
+   background-color: whitesmoke;
+    
+    }
+
+.actiondiv{
+   
+   background-color:white;
+   width: 30%;
+   padding-top: 1px;
+}  
+
+.actionitem{
+   
+    width: 15%;
+    height: 1%;
+    margin-left: 15%;
+    cursor: pointer;
+ }  
+
