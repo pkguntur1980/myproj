@@ -11,15 +11,15 @@
 .actiondiv{
    
    background-image: url('/assets/images/Actionbar.png');
-  
+  margin-top: 5%;
    
 }  
 
 .actionitem{
    
-    width: 12%;
+    width: 5%;
     height: 1%;
-    margin-left: 15%;
+    margin-left: 3%;
     cursor: pointer;
  }  
 

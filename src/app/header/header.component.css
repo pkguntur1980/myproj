@@ -3,7 +3,10 @@
     
      width: 100%;
      min-width: 100%;
-     position: fixed;
+    position: absolute;
+     height: 5%;
+     min-height: 5%;
+     
 }
 
 
@@ -11,45 +14,52 @@
 .logo
 {
     width:6%;
-    height:4%;
-    margin-left: 1%
+    height:54%;
+    margin-left: 1%;
 }
 
 .appname
 {
     width:10%;
-     height:10%;
+     height:30%;
     margin-left: 2%;
+}
+
+.home
+{
+    width:1.5%;
+    height:75%;
+    margin-left: 60%;
+    cursor: pointer;
 }
 
 .group
 {
     width:1.5%;
-     height:2%;
-    margin-left: 70%;
-    cursor: pointer;
+    height:75%;
+   margin-left: 1%;
+   cursor: pointer;
 }
+
 
 .download
 {
     width:1.5%;
-     height:2%;
+     height:75%;
     margin-left: 1%;
     cursor: pointer;
 }
 .book
 {
     width:1.5%;
-     height:2%;
-    margin-left: 1%;
+    height:75%;    margin-left: 1%;
     cursor: pointer;
 }
 
 .user
 {
     width:1.5%;
-     height:2%;
-    margin-left: 1%;
+    height:75%;    margin-left: 1%;
     cursor: pointer;
 }
 

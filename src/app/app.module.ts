@@ -10,15 +10,11 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ActionComponent } from './action/action.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import {RouterModule,Routes} from '@angular/router';
+import {RouterModule,Routes,Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes:Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'home',component:HomeComponent},
-  {path:'main',component:MainComponent},
-  {path:'',component:MainComponent}
-]
+
 
 @NgModule({
   declarations: [
@@ -36,11 +32,15 @@ const appRoutes:Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+AppRoutingModule  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })
 
 
-export class AppModule { }
+export class AppModule {
+
+  constructor(router: Router) {
+  }
+ }

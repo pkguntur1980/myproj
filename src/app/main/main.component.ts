@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
 
   allowDrop(ev) {
     ev.preventDefault();
+    ev.dataTransfer.dropEffect = "move";
   }
 
   touchHandler(te:TouchEvent)
