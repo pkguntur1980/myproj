@@ -1,20 +1,21 @@
 <div class="login">
-
-    <div>
-      <h5>Login </h5>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <mat-form-field   >
-              <input matInput placeholder="Enter Username" formControlName="username" >
-            </mat-form-field>
-        <mat-form-field >
-            <input type="password" formControlName="userpwd"  matInput placeholder="Enter Password" >
-            
-          </mat-form-field>
-        
-        <div class="submit">
-        <button  matButton class="submitbtn">Login</button>
-      </div>
-       
-      </form>
-    </div>
+  <div class="loginheader">Login</div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="padding-top: 5%;padding-left: 5%;">
+    <div class="form-group">
+      Enter Username
+      <input formControlName="username">
+    
   </div>
+   <div class="form-group">
+      Enter Password&nbsp;  
+      <input type="password" formControlName="userpwd">
+
+   </div>
+
+      <div style="padding-left: 34%;">
+      <button matButton >Login</button>
+    </div>
+
+
+  </form>
+</div>

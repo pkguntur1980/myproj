@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import {ViewChild} from "@angular/core";
+import { ViewChild } from "@angular/core";
 import { group } from '@angular/animations';
 
 @Component({
@@ -11,148 +11,112 @@ export class MainComponent implements OnInit {
   title = 'myngapp';
 
   showFiller = false;
-  ctx:CanvasRenderingContext2D;
-  startLine=false;
-  selectedDrawingObject:string;
+  ctx: CanvasRenderingContext2D;
+  startLine = false;
+  selectedDrawingObject: string;
+  selectedToDrag: boolean = false;
+  pos1: number = 0;
+  pos2: number = 0;
+  pos3: number = 0;
+  pos4: number = 0;
+  undoX: string;
+  undoY: string;
+  undoComponent: HTMLImageElement;
 
   //@ViewChild("myCanvas") myCanvas;
   @ViewChild("exitImg") exitImg;
   @ViewChild("gwcImg") gwcImg;
   @ViewChild("rwcImg") rwcImg;
 
-  ngOnInit()
-  {
-    
- 
-  
+  ngOnInit() {
+
+
+
   }
 
- 
+  onMouseDown(e: MouseEvent) {
 
-  allowDrop(ev) {
-    ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move";
-  }
+    this.selectedToDrag = true;
 
-  touchHandler(te:TouchEvent)
-  {
-    te.preventDefault();
-    let exitCircuit:HTMLImageElement = this.exitImg.nativeElement;
-      
-    exitCircuit.style.left = te.touches[te.touches.length-1].clientX  - exitCircuit.offsetWidth/2+"px";
-    exitCircuit.style.top = te.touches[te.touches.length-1].clientY - exitCircuit.offsetHeight/2+"px";
-    
-  }
-  touchrwcHandler(te:TouchEvent)
-  {
-    te.preventDefault();
-    let rwcCircuit:HTMLImageElement = this.rwcImg.nativeElement;
-      
-    rwcCircuit.style.left = te.touches[te.touches.length-1].clientX  - rwcCircuit.offsetWidth/2+"px";
-    rwcCircuit.style.top = te.touches[te.touches.length-1].clientY - rwcCircuit.offsetHeight/2+"px";
-    
-  }
-  touchgwcHandler(te:TouchEvent)
-  {
-    te.preventDefault();
-    let gwcCircuit:HTMLImageElement = this.gwcImg.nativeElement;
-      
-    gwcCircuit.style.left = te.touches[te.touches.length-1].clientX  - gwcCircuit.offsetWidth/2+"px";
-    gwcCircuit.style.top = te.touches[te.touches.length-1].clientY - gwcCircuit.offsetHeight/2+"px";
-    
+    this.pos3 = e.clientX;
+    this.pos4 = e.clientY;
+
   }
 
-  dropHandler(ev:DragEvent)
-  {
-    ev.preventDefault();
-    
-    console.trace("drop");
-    var data = ev.dataTransfer.getData("text");
-    if(data == "exitImg")
-    {
-      
-      let exitCircuit:HTMLImageElement = this.exitImg.nativeElement;
-      
-      exitCircuit.style.left = ev.pageX - exitCircuit.offsetWidth/2+"px";
-      exitCircuit.style.top = ev.pageY - exitCircuit.offsetHeight/2+"px";
-      
-    }
-    else if(data == "gwcImg")
-    {
-      
-      let gwcCircuit:HTMLImageElement = this.gwcImg.nativeElement;
-      gwcCircuit.style.left = ev.pageX - gwcCircuit.offsetWidth/2+"px";
-      gwcCircuit.style.top = ev.pageY - gwcCircuit.offsetHeight/2+"px";
-    }
-    else if(data == "rwcImg")
-    {
-      
-      let rwcCircuit:HTMLImageElement = this.rwcImg.nativeElement;
-      rwcCircuit.style.left = ev.pageX - rwcCircuit.offsetWidth/2+"px";
-      rwcCircuit.style.top = ev.pageY - rwcCircuit.offsetHeight/2+"px";
-      
+  onMouseMove(e: MouseEvent) {
+
+    e.preventDefault();
+    if (this.selectedToDrag) {
+
+      let circuit: HTMLImageElement = e.currentTarget as HTMLImageElement;
+
+      // calculate the new cursor position:
+      this.undoComponent = circuit;
+      this.undoX = circuit.style.top;
+      this.undoY = circuit.style.left;
+      this.pos1 = this.pos3 - e.clientX;
+      this.pos2 = this.pos4 - e.clientY;
+      this.pos3 = e.clientX;
+      this.pos4 = e.clientY;
+      // set the element's new position:
+      circuit.style.top = (circuit.offsetTop - this.pos2) + "px";
+      circuit.style.left = (circuit.offsetLeft - this.pos1) + "px";
     }
   }
 
- 
-
-  ngAfterViewInit()
-  {
-    /*let canvas = this.myCanvas.nativeElement;
-    var dpr = window.devicePixelRatio || 1;
-    // Get the size of the canvas in CSS pixels.
-    var rect = canvas.getBoundingClientRect();
-    // Give the canvas pixel dimensions of their CSS
-    // size * the device pixel ratio.
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    
-    this.ctx = canvas.getContext("2d");
-    var img1 = new Image();
-    img1.src ="assets/images/Exit.png";
-    var imgData=this.ctx.drawImage(img1,100,100,500,100);*/
-    
-    
+  onMouseUp(e: MouseEvent) {
+    e.preventDefault();
+    this.selectedToDrag = false;
   }
 
-  dragHandler(de:DragEvent)
-  {
-    console.trace("drag");
-    de.dataTransfer.setData("text", (de.target as HTMLImageElement).id);
+
+  onTouchStart(e: TouchEvent) {
+
+    this.selectedToDrag = true;
+
+    this.pos3 = e.touches[e.touches.length - 1].clientX;
+    this.pos4 = e.touches[e.touches.length - 1].clientY;
+
   }
 
-  capturePoint(me:MouseEvent)
-  {
-    if(this.selectedDrawingObject=="line")
-    {
-      this.ctx.lineWidth = 5;
-    if(this.startLine)
-    {
-      this.ctx.lineTo(me.offsetX,me.offsetY);
-      this.ctx.stroke(); 
-    }
-    else{
-    this.ctx.moveTo(me.offsetX,me.offsetY);
-    this.startLine= !this.startLine;
-    }
-    
-  }
-  else{
-    this.ctx.closePath();
-  }
-  }
+  onTouchMove(e: TouchEvent) {
 
-  shapeSelectClick(value){
-    console.trace(value);
-    this.selectedDrawingObject = value;
-    if(this.selectedDrawingObject == "line")
-    {
-      this.ctx.beginPath();
+    e.preventDefault();
+    if (this.selectedToDrag) {
+
+      let circuit: HTMLImageElement = e.currentTarget as HTMLImageElement;
+
+      // undo the last action
+      this.undoComponent = circuit;
+      this.undoX = circuit.style.top;
+      this.undoY = circuit.style.left;
+
+      this.pos1 = this.pos3 - e.touches[e.touches.length - 1].clientX;
+      this.pos2 = this.pos4 - e.touches[e.touches.length - 1].clientY;
+      this.pos3 = e.touches[e.touches.length - 1].clientX;
+      this.pos4 = e.touches[e.touches.length - 1].clientY;
+      // set the element's new position:
+      circuit.style.top = (circuit.offsetTop - this.pos2) + "px";
+      circuit.style.left = (circuit.offsetLeft - this.pos1) + "px";
     }
   }
 
-   clearRect( sx:number, sy:number,ex:number,ey:number) {
-    this.ctx.clearRect(sx,sy,ex,ey);
+  onTouchEnd(e: TouchEvent) {
+    e.preventDefault();
+    this.selectedToDrag = false;
   }
+
+
+  undoRecentAction() {
+    this.undoComponent.style.top = this.undoX;
+    this.undoComponent.style.left = this.undoY;
+  }
+
+
+
+
+
+
+
 
 }

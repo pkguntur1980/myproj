@@ -1,19 +1,20 @@
-.login{
+.login 
+{
+    border:1px solid #250b3a;
+    position: absolute;
+    align-self: center;
+    top:25%;
+    left:40%;
+    z-index: 1;
+    width:30%;
+    height: 30%;
 
-    width: 20%;
-    height: 20%;
-    top:15%;
-    position: fixed;
-    margin-left: 40%;
 }
 
-.submitbtn{
-   
-    background-image: url('/assets/images/button.png');
-    border-image: url('/assets/images/button.png');
+.loginheader
+{
+    background-color: #250b3a;
+    text-align: center;
+    color: white;
 }
 
-.submit{
-
-    padding-top: 5%;
-}
